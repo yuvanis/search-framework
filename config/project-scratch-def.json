@@ -1,6 +1,5 @@
 {
   "orgName": "Demo company",
-  "sourceOrg": "00D2w00000HKJsgEAH",
   "edition": "Developer",
   "features": ["EnableSetPasswordInApi"],
   "settings": {
