@@ -1,10 +1,16 @@
 public with sharing class Pagination {
 
+    @AuraEnabled
     public Integer recordsPerPage = 10;
+    @AuraEnabled
     public Integer currentPageNumber = 1;
-    public Integer pages;
+    @AuraEnabled
+    public Integer pages = 1;
+    @AuraEnabled
     public Integer recordsPerCurrentPage;
+    @AuraEnabled
     public Integer offset = 0;
+    @AuraEnabled
     public Integer allRecords;
 
     public void setRecordsCount(Integer recordsCount) {

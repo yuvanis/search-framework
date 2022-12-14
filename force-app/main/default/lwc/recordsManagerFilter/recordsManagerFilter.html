@@ -1,0 +1,30 @@
+<!--
+ - Created by YuryNistratau on 09.12.2022.
+ -->
+
+<!-- Records Manager Filter -->
+<template>
+    <div class="slds-grid slds-gutters slds-m-bottom_medium">
+        <lightning-input class="slds-size_1-of-6 slds-col"
+                         name="enter-search"
+                         label="Press 'enter' to search"
+                         type="search"
+                         value={filter.searchString}
+                         onchange={handleValue}
+        ></lightning-input>
+        <lightning-input class="slds-size_1-of-6 slds-col"
+                         type="number"
+                         name="minAge"
+                         label="Enter a minimum age"
+                         value={filter.minAge}
+                         onchange={handleMinAge}>
+        </lightning-input>
+        <lightning-input class="slds-size_1-of-6 slds-col"
+                         type="number"
+                         name="maxAge"
+                         label="Enter a maximum age"
+                         value={filter.maxAge}
+                         onchange={handleMaxAge}>
+        </lightning-input>
+    </div>
+</template>

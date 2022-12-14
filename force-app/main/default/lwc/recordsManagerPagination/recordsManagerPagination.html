@@ -1,0 +1,39 @@
+<!--
+ - Created by YuryNistratau on 09.12.2022.
+ -->
+
+<!-- Records Manager Pagination -->
+<template>
+    <lightning-button-group class="slds-align_absolute-center">
+        <lightning-button class="slds-m-horizontal_x-small"
+                          label="First"
+                          icon-name="utility:left"
+                          icon-position="left"
+                          onclick={firstPage}>
+        </lightning-button>
+        <lightning-button class="slds-m-horizontal_x-small"
+                          label="Previous"
+                          variant="brand"
+                          icon-name="utility:back"
+                          name="previous"
+                          onclick={previousPage}>
+        </lightning-button>
+        <span class="slds-badge slds-badge_lightest pagination-text slds-m-horizontal_x-small">
+                    Page {pagination.currentPageNumber} of {pagination.pages}
+        </span>
+        <lightning-button class="slds-m-horizontal_x-small"
+                          label="Next"
+                          variant="brand"
+                          icon-name="utility:forward"
+                          icon-position="right"
+                          name="next"
+                          onclick={nextPage}>
+        </lightning-button>
+        <lightning-button class="slds-m-horizontal_x-small"
+                          label="Last"
+                          icon-name="utility:right"
+                          icon-position="right"
+                          onclick={lastPage}>
+        </lightning-button>
+    </lightning-button-group>
+</template>
