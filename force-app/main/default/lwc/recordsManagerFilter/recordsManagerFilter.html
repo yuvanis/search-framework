@@ -7,7 +7,7 @@
     <div class="slds-grid slds-gutters slds-m-bottom_medium">
         <lightning-input class="slds-size_1-of-6 slds-col"
                          name="enter-search"
-                         label="Press 'enter' to search"
+                         label="Enter a search string"
                          type="search"
                          value={filter.searchString}
                          onchange={handleValue}
@@ -15,14 +15,14 @@
         <lightning-input class="slds-size_1-of-6 slds-col"
                          type="number"
                          name="minAge"
-                         label="Enter a minimum age"
+                         label="Enter minimum age (default: 0)"
                          value={filter.minAge}
                          onchange={handleMinAge}>
         </lightning-input>
         <lightning-input class="slds-size_1-of-6 slds-col"
                          type="number"
                          name="maxAge"
-                         label="Enter a maximum age"
+                         label="Enter maximum age (default: 100)"
                          value={filter.maxAge}
                          onchange={handleMaxAge}>
         </lightning-input>

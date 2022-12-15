@@ -4,9 +4,9 @@
 
 public with sharing class Filter_Contact implements Filter {
 
-    @AuraEnabled public String searchString = '';
-    @AuraEnabled public String minAge = '20';
-    @AuraEnabled public String maxAge = '30';
+    @AuraEnabled public String searchString;
+    @AuraEnabled public String minAge;
+    @AuraEnabled public String maxAge;
 
     public List<String> getFields() {
         return new List<String>{
@@ -17,9 +17,12 @@ public with sharing class Filter_Contact implements Filter {
     }
 
     public String getFilterString() {
-        if (String.isEmpty(searchString)) return null;
-        return '(FirstName LIKE \'%' + searchString + '%\' OR LastName LIKE \'%'
-                + searchString + '%\')';
+        if (String.isEmpty(minAge)) minAge = '0';
+        if (String.isEmpty(maxAge)) maxAge = '100';
+        return '(FirstName LIKE \'%' + searchString + '%\' ' +
+                'OR LastName LIKE \'%' + searchString + '%\')' +
+                ' AND (Current_age__c < ' + maxAge +
+                ' AND Current_age__c > ' + minAge + ')';
     }
 
     public SObjectType getSObjectType() {
