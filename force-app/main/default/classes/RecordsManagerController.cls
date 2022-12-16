@@ -17,9 +17,10 @@ public with sharing class RecordsManagerController {
 
     @AuraEnabled
     public static SearchResponse getRecords(String filterStr, String paginationStr) {
-        Filter_Settings__c filterJSON = Filter_Settings__c.getOrgDefaults();
-        filterJSON.Filter_Value__c = filterStr;
-        update filterJSON;
+        Filter_Settings__c filterSetting= Filter_Settings__c.getOrgDefaults();
+        filterSetting.Filter_Value__c = filterStr;
+        update filterSetting;
+        System.debug('FilterJSON: ' + filterStr);
         Filter filter = (Filter_Contact)JSON.deserialize(filterStr, Filter_Contact.class);
         Pagination pagination = (Pagination)JSON.deserialize(paginationStr, Pagination.class);
         return SearchService.search(filter, pagination);
@@ -36,7 +37,8 @@ public with sharing class RecordsManagerController {
             for (String currentField : filter.getFields()) {
                 columns.add(new Map<String, String>{
                         'label' => Contact.getSObjectType().getDescribe().fields.getMap().get(currentField).getDescribe().getLabel(),
-                        'fieldName' => currentField
+                        'fieldName' => currentField,
+                        'value' => currentField
                 });
             }
         }

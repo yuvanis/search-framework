@@ -4,8 +4,9 @@
 
 <!-- records Manager -->
 <template>
-    <div if:true={initialized} style="background-color: white; padding: 10px 5px;">
+    <div if:true={initialized} class="slds-panel">
         <c-records-manager-filter filter={filter}
+                                  columns={columns}
                                   onfilterchange={handleFilterChange}
         ></c-records-manager-filter>
         <div style="position: relative;" class="slds-align_absolute-center slds-m-bottom_medium">
@@ -15,7 +16,7 @@
                                    size="medium">
                 </lightning-spinner>
             </div>
-            <div style="width: 100%;">
+            <div>
                 <lightning-datatable key-field="id"
                                      data={records}
                                      columns={columns}>

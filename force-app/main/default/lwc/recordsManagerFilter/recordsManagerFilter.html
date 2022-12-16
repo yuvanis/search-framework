@@ -15,16 +15,25 @@
         <lightning-input class="slds-size_1-of-6 slds-col"
                          type="number"
                          name="minAge"
-                         label="Enter minimum age (default: 0)"
+                         label="Enter minimum age"
                          value={filter.minAge}
-                         onchange={handleMinAge}>
-        </lightning-input>
+                         onchange={handleMinAge}
+        ></lightning-input>
         <lightning-input class="slds-size_1-of-6 slds-col"
                          type="number"
                          name="maxAge"
-                         label="Enter maximum age (default: 100)"
+                         label="Enter maximum age"
                          value={filter.maxAge}
-                         onchange={handleMaxAge}>
-        </lightning-input>
+                         onchange={handleMaxAge}
+        ></lightning-input>
+        <lightning-combobox class="slds-size_1-of-6 slds-col"
+                            name="progress"
+                            label="Sort by"
+                            value={filter.sortedField}
+                            placeholder="Select Field"
+                            options={columns}
+                            onchange={handleSort}
+                            validity=""
+        ></lightning-combobox>
     </div>
 </template>

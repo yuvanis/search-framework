@@ -6,5 +6,6 @@ public interface Filter {
 
     List<String> getFields();
     String getFilterString();
+    String getOrderByString();
     SObjectType getSObjectType();
 }

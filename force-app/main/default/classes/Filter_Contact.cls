@@ -7,6 +7,7 @@ public with sharing class Filter_Contact implements Filter {
     @AuraEnabled public String searchString;
     @AuraEnabled public String minAge;
     @AuraEnabled public String maxAge;
+    @AuraEnabled public String sortedField;
 
     public List<String> getFields() {
         return new List<String>{
@@ -17,12 +18,15 @@ public with sharing class Filter_Contact implements Filter {
     }
 
     public String getFilterString() {
-        if (String.isEmpty(minAge)) minAge = '0';
-        if (String.isEmpty(maxAge)) maxAge = '100';
-        return '(FirstName LIKE \'%' + searchString + '%\' ' +
-                'OR LastName LIKE \'%' + searchString + '%\')' +
-                ' AND (Current_age__c < ' + maxAge +
-                ' AND Current_age__c > ' + minAge + ')';
+        List<String> filterItems = new List<String>();
+        filterItems.add('(FirstName LIKE \'%' + searchString + '%\' ' + 'OR LastName LIKE \'%' + searchString + '%\')');
+        if (!String.isEmpty(minAge)) filterItems.add('Current_age__c > ' + minAge);
+        if (!String.isEmpty(maxAge)) filterItems.add('Current_age__c < ' + maxAge);
+        return String.join(filterItems, ' AND ');
+    }
+
+    public String getOrderByString() {
+        return sortedField;
     }
 
     public SObjectType getSObjectType() {

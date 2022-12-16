@@ -7,6 +7,7 @@ import {api, LightningElement} from 'lwc';
 export default class RecordsManagerFilter extends LightningElement {
 
     @api filter;
+    @api columns;
 
     handleValue(evt) {
         const newFilter = JSON.parse(JSON.stringify(this.filter));
@@ -26,12 +27,17 @@ export default class RecordsManagerFilter extends LightningElement {
         this.filterChange(newFilter);
     }
 
+    handleSort(evt) {
+        const newFilter = JSON.parse(JSON.stringify(this.filter));
+        newFilter.sortedField = evt.target.value;
+        this.filterChange(newFilter);
+    }
+
     filterChange(newFilter) {
         this.dispatchEvent(new CustomEvent('filterchange', {
                 detail: newFilter
             }
         ));
     }
+
 }
-
-
