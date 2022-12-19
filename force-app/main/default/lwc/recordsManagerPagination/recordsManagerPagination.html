@@ -4,10 +4,10 @@
 
 <!-- Records Manager Pagination -->
 <template>
-    <lightning-button-group class="slds-align_absolute-center">
+    <div class="slds-align_absolute-center slds-p-bottom_medium">
         <lightning-button class="slds-m-horizontal_x-small"
                           label="First"
-                          icon-name="utility:left"
+                          icon-name="utility:back"
                           icon-position="left"
                           onclick={firstPage}>
         </lightning-button>
@@ -18,7 +18,7 @@
                           name="previous"
                           onclick={previousPage}>
         </lightning-button>
-        <span class="slds-badge slds-badge_lightest slds-m-horizontal_x-small">
+        <span class="slds-badge slds-badge_lightest slds-m-horizontal_x-small" style="height: 32px;">
                     Page {pagination.currentPageNumber} of {pagination.pages}
         </span>
         <lightning-button class="slds-m-horizontal_x-small"
@@ -35,5 +35,5 @@
                           icon-position="right"
                           onclick={lastPage}>
         </lightning-button>
-    </lightning-button-group>
+    </div>
 </template>

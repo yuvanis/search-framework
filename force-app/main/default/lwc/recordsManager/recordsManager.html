@@ -4,12 +4,12 @@
 
 <!-- records Manager -->
 <template>
-    <div if:true={initialized} class="slds-panel">
+    <div if:true={initialized} class="slds-panel" style="overflow-x: hidden;">
         <c-records-manager-filter filter={filter}
                                   columns={columns}
                                   onfilterchange={handleFilterChange}
         ></c-records-manager-filter>
-        <div style="position: relative;" class="slds-align_absolute-center slds-m-bottom_medium">
+        <div style="position: relative; height: 330px;" class="slds-align_absolute-center slds-m-bottom_medium slds-panel__body">
             <div if:true={showSpinner}>
                 <lightning-spinner style="width: 100%;" class="slds-align_absolute-center"
                                    alternative-text="Loading"
@@ -17,7 +17,8 @@
                 </lightning-spinner>
             </div>
             <div>
-                <lightning-datatable key-field="id"
+                <lightning-datatable style="margin: 0 10px; position: absolute; top: 0; left: 0; right: 0;"
+                                     key-field="id"
                                      data={records}
                                      columns={columns}>
                 </lightning-datatable>
