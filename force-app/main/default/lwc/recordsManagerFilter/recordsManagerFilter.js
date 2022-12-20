@@ -1,11 +1,10 @@
 /**
- * Created by YuryNistratau on 09.12.2022.
+ * Created by Yury Nistratau on 09.12.2022.
  */
 
-import {api, LightningElement} from 'lwc';
+import { api, LightningElement } from "lwc";
 
 export default class RecordsManagerFilter extends LightningElement {
-
     @api filter;
     @api columns;
     @api direction;
@@ -41,10 +40,10 @@ export default class RecordsManagerFilter extends LightningElement {
     }
 
     filterChange(newFilter) {
-        this.dispatchEvent(new CustomEvent('filterchange', {
-                detail: newFilter
-            }
-        ));
+        this.dispatchEvent(
+            new CustomEvent("filterchange", {
+                detail: newFilter,
+            })
+        );
     }
-
 }

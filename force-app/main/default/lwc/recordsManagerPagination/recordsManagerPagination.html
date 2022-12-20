@@ -1,39 +1,50 @@
 <!--
- - Created by YuryNistratau on 09.12.2022.
+ - Created by Yury Nistratau on 09.12.2022.
  -->
 
 <!-- Records Manager Pagination -->
 <template>
     <div class="slds-align_absolute-center slds-p-bottom_medium">
-        <lightning-button class="slds-m-horizontal_x-small"
-                          label="First"
-                          icon-name="utility:back"
-                          icon-position="left"
-                          onclick={firstPage}>
+        <lightning-button
+            class="slds-m-horizontal_x-small"
+            label="First"
+            icon-name="utility:back"
+            icon-position="left"
+            onclick={firstPage}
+        >
         </lightning-button>
-        <lightning-button class="slds-m-horizontal_x-small"
-                          label="Previous"
-                          variant="brand"
-                          icon-name="utility:back"
-                          name="previous"
-                          onclick={previousPage}>
+        <lightning-button
+            class="slds-m-horizontal_x-small"
+            label="Previous"
+            variant="brand"
+            icon-name="utility:back"
+            name="previous"
+            onclick={previousPage}
+        >
         </lightning-button>
-        <span class="slds-badge slds-badge_lightest slds-m-horizontal_x-small" style="height: 32px;">
-                    Page {pagination.currentPageNumber} of {pagination.pages}
+        <span
+            class="slds-badge slds-badge_lightest slds-m-horizontal_x-small"
+            style="height: 32px"
+        >
+            Page {pagination.currentPageNumber} of {pagination.pages}
         </span>
-        <lightning-button class="slds-m-horizontal_x-small"
-                          label="Next"
-                          variant="brand"
-                          icon-name="utility:forward"
-                          icon-position="right"
-                          name="next"
-                          onclick={nextPage}>
+        <lightning-button
+            class="slds-m-horizontal_x-small"
+            label="Next"
+            variant="brand"
+            icon-name="utility:forward"
+            icon-position="right"
+            name="next"
+            onclick={nextPage}
+        >
         </lightning-button>
-        <lightning-button class="slds-m-horizontal_x-small"
-                          label="Last"
-                          icon-name="utility:right"
-                          icon-position="right"
-                          onclick={lastPage}>
+        <lightning-button
+            class="slds-m-horizontal_x-small"
+            label="Last"
+            icon-name="utility:right"
+            icon-position="right"
+            onclick={lastPage}
+        >
         </lightning-button>
     </div>
 </template>

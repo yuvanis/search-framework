@@ -1,28 +1,39 @@
 /**
- * Created by YuryNistratau on 09.12.2022.
+ * Created by Yury Nistratau on 09.12.2022.
  */
 
 public with sharing class RecordsManagerController {
-
     @AuraEnabled
     public static InitData getInitData() {
         Filter_Contact filter = new Filter_Contact();
         Pagination pagination = new Pagination();
         String filterJSON = Filter_Settings__c.getOrgDefaults().Filter_Value__c;
         if (!String.isEmpty(filterJSON)) {
-            filter = (Filter_Contact)JSON.deserialize(filterJSON, Filter_Contact.class);
+            filter = (Filter_Contact) JSON.deserialize(
+                filterJSON,
+                Filter_Contact.class
+            );
         }
         return new InitData(filter, SearchService.search(filter, pagination));
     }
 
     @AuraEnabled
-    public static SearchResponse getRecords(String filterStr, String paginationStr) {
-        Filter_Settings__c filterSetting= Filter_Settings__c.getOrgDefaults();
+    public static SearchResponse getRecords(
+        String filterStr,
+        String paginationStr
+    ) {
+        Filter_Settings__c filterSetting = Filter_Settings__c.getOrgDefaults();
         filterSetting.Filter_Value__c = filterStr;
         update filterSetting;
         System.debug('FilterJSON: ' + filterStr);
-        Filter filter = (Filter_Contact)JSON.deserialize(filterStr, Filter_Contact.class);
-        Pagination pagination = (Pagination)JSON.deserialize(paginationStr, Pagination.class);
+        Filter filter = (Filter_Contact) JSON.deserialize(
+            filterStr,
+            Filter_Contact.class
+        );
+        Pagination pagination = (Pagination) JSON.deserialize(
+            paginationStr,
+            Pagination.class
+        );
         return SearchService.search(filter, pagination);
     }
 
@@ -35,14 +46,20 @@ public with sharing class RecordsManagerController {
             this.filter = filter;
             this.searchResponse = searchResponse;
             for (String currentField : filter.getFields()) {
-                columns.add(new Map<String, String>{
-                        'label' => Contact.getSObjectType().getDescribe().fields.getMap().get(currentField).getDescribe().getLabel(),
+                columns.add(
+                    new Map<String, String>{
+                        'label' => Contact.getSObjectType()
+                            .getDescribe()
+                            .fields.getMap()
+                            .get(currentField)
+                            .getDescribe()
+                            .getLabel(),
                         'fieldName' => currentField,
                         'value' => currentField,
                         'sortable' => 'true'
-                });
+                    }
+                );
             }
         }
     }
-
 }

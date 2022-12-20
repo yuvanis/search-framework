@@ -1,13 +1,12 @@
 /**
- * Created by YuryNistratau on 09.12.2022.
+ * Created by Yury Nistratau on 09.12.2022.
  */
 
-import {LightningElement, track} from 'lwc';
-import getRecords from '@salesforce/apex/RecordsManagerController.getRecords';
-import getInitData from '@salesforce/apex/RecordsManagerController.getInitData';
+import { LightningElement, track } from "lwc";
+import getRecords from "@salesforce/apex/RecordsManagerController.getRecords";
+import getInitData from "@salesforce/apex/RecordsManagerController.getInitData";
 
 export default class recordsManager extends LightningElement {
-
     @track columns;
     @track records;
     @track sortDirection;
@@ -16,8 +15,8 @@ export default class recordsManager extends LightningElement {
     @track initialized = false;
     @track showSpinner = false;
     @track direction = [
-        {label: 'Ascending', value: 'asc'},
-        {label: 'Descending', value: 'desc'},
+        { label: "Ascending", value: "asc" },
+        { label: "Descending", value: "desc" },
     ];
 
     handleFilterChange(evt) {
@@ -33,10 +32,10 @@ export default class recordsManager extends LightningElement {
     handleSort(evt) {
         if (this.filter.sortedField === evt.detail.fieldName) {
             this.sortDirection = evt.detail.sortDirection;
-            if (this.sortDirection === 'asc') {
-                this.sortDirection = 'desc';
+            if (this.sortDirection === "asc") {
+                this.sortDirection = "desc";
             } else {
-                this.sortDirection = 'asc';
+                this.sortDirection = "asc";
             }
             this.filter.sortDirection = this.sortDirection;
         } else {
@@ -53,26 +52,29 @@ export default class recordsManager extends LightningElement {
 
     init() {
         this.showSpinner = true;
-        getInitData().then(initData => {
+        getInitData().then((initData) => {
             this.filter = initData.filter;
             this.pagination = initData.searchResponse.pagination;
             this.records = initData.searchResponse.records;
             this.columns = initData.columns;
             this.initialized = true;
             this.showSpinner = false;
-        })
+        });
     }
 
     getData() {
         this.showSpinner = true;
-        getRecords({filterStr: JSON.stringify(this.filter), paginationStr: JSON.stringify(this.pagination)})
-            .then(result => {
+        getRecords({
+            filterStr: JSON.stringify(this.filter),
+            paginationStr: JSON.stringify(this.pagination),
+        })
+            .then((result) => {
                 this.pagination = result.pagination;
                 this.records = result.records;
                 this.showSpinner = false;
             })
-            .catch(error => {
-                console.log('error ' + error.message);
+            .catch((error) => {
+                console.log("error " + error.message);
             });
     }
 }

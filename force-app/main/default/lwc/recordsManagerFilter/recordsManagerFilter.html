@@ -1,48 +1,53 @@
 <!--
- - Created by YuryNistratau on 09.12.2022.
+ - Created by Yury Nistratau on 09.12.2022.
  -->
 
 <!-- Records Manager Filter -->
 <template>
     <div class="slds-grid slds-gutters slds-m-bottom_medium slds-panel__header">
-        <lightning-input class="slds-size_1-of-6 slds-col"
-                         name="enter-search"
-                         label="Enter a search string"
-                         type="search"
-                         value={filter.searchString}
-                         onchange={handleValue}
+        <lightning-input
+            class="slds-size_1-of-6 slds-col"
+            name="enter-search"
+            label="Enter a search string"
+            type="search"
+            value={filter.searchString}
+            onchange={handleValue}
         ></lightning-input>
-        <lightning-input class="slds-size_1-of-6 slds-col"
-                         type="number"
-                         name="minAge"
-                         label="Enter minimum age"
-                         value={filter.minAge}
-                         onchange={handleMinAge}
+        <lightning-input
+            class="slds-size_1-of-6 slds-col"
+            type="number"
+            name="minAge"
+            label="Enter minimum age"
+            value={filter.minAge}
+            onchange={handleMinAge}
         ></lightning-input>
-        <lightning-input class="slds-size_1-of-6 slds-col"
-                         type="number"
-                         name="maxAge"
-                         label="Enter maximum age"
-                         value={filter.maxAge}
-                         onchange={handleMaxAge}
+        <lightning-input
+            class="slds-size_1-of-6 slds-col"
+            type="number"
+            name="maxAge"
+            label="Enter maximum age"
+            value={filter.maxAge}
+            onchange={handleMaxAge}
         ></lightning-input>
-        <lightning-combobox class="slds-size_1-of-6 slds-col"
-                            name="progress"
-                            label="Sort by field"
-                            value={filter.sortedField}
-                            placeholder="Select Field"
-                            options={columns}
-                            onchange={handleSortField}
-                            validity=""
+        <lightning-combobox
+            class="slds-size_1-of-6 slds-col"
+            name="progress"
+            label="Sort by field"
+            value={filter.sortedField}
+            placeholder="Select Field"
+            options={columns}
+            onchange={handleSortField}
+            validity=""
         ></lightning-combobox>
-        <lightning-combobox class="slds-size_1-of-6 slds-col"
-                            name="progress"
-                            label="Sort by direction"
-                            value={filter.sortDirection}
-                            placeholder="Select Direction"
-                            options={direction}
-                            onchange={handleDirection}
-                            validity=""
+        <lightning-combobox
+            class="slds-size_1-of-6 slds-col"
+            name="progress"
+            label="Sort by direction"
+            value={filter.sortDirection}
+            placeholder="Select Direction"
+            options={direction}
+            onchange={handleDirection}
+            validity=""
         ></lightning-combobox>
     </div>
 </template>

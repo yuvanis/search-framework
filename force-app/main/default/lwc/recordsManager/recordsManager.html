@@ -1,36 +1,52 @@
 <!--
- - Created by YuryNistratau on 09.12.2022.
+ - Created by Yury Nistratau on 09.12.2022.
  -->
 
 <!-- records Manager -->
 <template>
-    <div if:true={initialized} class="slds-panel" style="overflow-x: hidden;">
-        <c-records-manager-filter filter={filter}
-                                  columns={columns}
-                                  direction={direction}
-                                  onfilterchange={handleFilterChange}
+    <div if:true={initialized} class="slds-panel" style="overflow-x: hidden">
+        <c-records-manager-filter
+            filter={filter}
+            columns={columns}
+            direction={direction}
+            onfilterchange={handleFilterChange}
         ></c-records-manager-filter>
-        <div style="position: relative; height: 330px;" class="slds-align_absolute-center slds-m-bottom_medium slds-panel__body">
+        <div
+            style="position: relative; height: 330px"
+            class="slds-align_absolute-center slds-m-bottom_medium slds-panel__body"
+        >
             <div if:true={showSpinner}>
-                <lightning-spinner style="width: 100%;" class="slds-align_absolute-center"
-                                   alternative-text="Loading"
-                                   size="medium">
+                <lightning-spinner
+                    style="width: 100%"
+                    class="slds-align_absolute-center"
+                    alternative-text="Loading"
+                    size="medium"
+                >
                 </lightning-spinner>
             </div>
             <div>
-                <lightning-datatable style="margin: 0 10px; position: absolute; top: 0; left: 0; right: 0;"
-                                     key-field="id"
-                                     data={records}
-                                     columns={columns}
-                                     hide-checkbox-column
-                                     default-sort-direction={filter.sortDirection}
-                                     sorted-direction={filter.sortDirection}
-                                     onsort={handleSort}>
+                <lightning-datatable
+                    style="
+                        margin: 0 10px;
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        right: 0;
+                    "
+                    key-field="id"
+                    data={records}
+                    columns={columns}
+                    hide-checkbox-column
+                    default-sort-direction={filter.sortDirection}
+                    sorted-direction={filter.sortDirection}
+                    onsort={handleSort}
+                >
                 </lightning-datatable>
             </div>
         </div>
-        <c-records-manager-pagination pagination={pagination}
-                                      onchange={handlePaginationChange}
+        <c-records-manager-pagination
+            pagination={pagination}
+            onchange={handlePaginationChange}
         ></c-records-manager-pagination>
     </div>
 </template>

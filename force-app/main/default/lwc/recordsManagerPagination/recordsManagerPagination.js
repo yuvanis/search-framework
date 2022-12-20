@@ -1,11 +1,10 @@
 /**
- * Created by YuryNistratau on 09.12.2022.
+ * Created by Yury Nistratau on 09.12.2022.
  */
 
-import {api, LightningElement} from 'lwc';
+import { api, LightningElement } from "lwc";
 
 export default class RecordsManagerPagination extends LightningElement {
-
     @api pagination = {};
 
     nextPage() {
@@ -27,7 +26,8 @@ export default class RecordsManagerPagination extends LightningElement {
     firstPage() {
         const newPagination = this.clonePagination();
         newPagination.currentPageNumber = 1;
-        this.fireChange(newPagination);    }
+        this.fireChange(newPagination);
+    }
 
     lastPage() {
         const newPagination = this.clonePagination();
@@ -36,9 +36,11 @@ export default class RecordsManagerPagination extends LightningElement {
     }
 
     fireChange(pagination) {
-        this.dispatchEvent(new CustomEvent('change', {
-            detail: pagination
-        }));
+        this.dispatchEvent(
+            new CustomEvent("change", {
+                detail: pagination,
+            })
+        );
     }
 
     clonePagination() {
