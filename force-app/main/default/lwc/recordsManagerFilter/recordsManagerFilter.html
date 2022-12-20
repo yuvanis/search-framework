@@ -28,11 +28,20 @@
         ></lightning-input>
         <lightning-combobox class="slds-size_1-of-6 slds-col"
                             name="progress"
-                            label="Sort by"
+                            label="Sort by field"
                             value={filter.sortedField}
                             placeholder="Select Field"
                             options={columns}
-                            onchange={handleSort}
+                            onchange={handleSortField}
+                            validity=""
+        ></lightning-combobox>
+        <lightning-combobox class="slds-size_1-of-6 slds-col"
+                            name="progress"
+                            label="Sort by direction"
+                            value={filter.sortDirection}
+                            placeholder="Select Direction"
+                            options={direction}
+                            onchange={handleDirection}
                             validity=""
         ></lightning-combobox>
     </div>

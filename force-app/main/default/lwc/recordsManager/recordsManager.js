@@ -10,18 +10,40 @@ export default class recordsManager extends LightningElement {
 
     @track columns;
     @track records;
+    @track sortDirection;
     @track filter;
     @track pagination;
     @track initialized = false;
     @track showSpinner = false;
+    @track direction = [
+        {label: 'Ascending', value: 'asc'},
+        {label: 'Descending', value: 'desc'},
+    ];
 
-    handleFilterChange(event) {
-        this.filter = event.detail;
+    handleFilterChange(evt) {
+        this.filter = evt.detail;
         this.getData();
     }
 
-    handlePaginationChange(event) {
-        this.pagination = event.detail;
+    handlePaginationChange(evt) {
+        this.pagination = evt.detail;
+        this.getData();
+    }
+
+    handleSort(evt) {
+        if (this.filter.sortedField === evt.detail.fieldName) {
+            this.sortDirection = evt.detail.sortDirection;
+            if (this.sortDirection === 'asc') {
+                this.sortDirection = 'desc';
+            } else {
+                this.sortDirection = 'asc';
+            }
+            this.filter.sortDirection = this.sortDirection;
+        } else {
+            this.filter.sortedField = evt.detail.fieldName;
+            this.sortDirection = evt.detail.sortDirection;
+            this.filter.sortDirection = this.sortDirection;
+        }
         this.getData();
     }
 
@@ -31,8 +53,7 @@ export default class recordsManager extends LightningElement {
 
     init() {
         this.showSpinner = true;
-        getInitData().
-        then(initData => {
+        getInitData().then(initData => {
             this.filter = initData.filter;
             this.pagination = initData.searchResponse.pagination;
             this.records = initData.searchResponse.records;

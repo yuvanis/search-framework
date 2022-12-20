@@ -38,7 +38,8 @@ public with sharing class RecordsManagerController {
                 columns.add(new Map<String, String>{
                         'label' => Contact.getSObjectType().getDescribe().fields.getMap().get(currentField).getDescribe().getLabel(),
                         'fieldName' => currentField,
-                        'value' => currentField
+                        'value' => currentField,
+                        'sortable' => 'true'
                 });
             }
         }

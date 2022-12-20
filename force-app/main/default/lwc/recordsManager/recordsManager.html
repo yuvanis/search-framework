@@ -7,6 +7,7 @@
     <div if:true={initialized} class="slds-panel" style="overflow-x: hidden;">
         <c-records-manager-filter filter={filter}
                                   columns={columns}
+                                  direction={direction}
                                   onfilterchange={handleFilterChange}
         ></c-records-manager-filter>
         <div style="position: relative; height: 330px;" class="slds-align_absolute-center slds-m-bottom_medium slds-panel__body">
@@ -20,7 +21,11 @@
                 <lightning-datatable style="margin: 0 10px; position: absolute; top: 0; left: 0; right: 0;"
                                      key-field="id"
                                      data={records}
-                                     columns={columns}>
+                                     columns={columns}
+                                     hide-checkbox-column
+                                     default-sort-direction={filter.sortDirection}
+                                     sorted-direction={filter.sortDirection}
+                                     onsort={handleSort}>
                 </lightning-datatable>
             </div>
         </div>

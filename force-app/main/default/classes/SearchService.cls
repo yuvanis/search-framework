@@ -5,7 +5,7 @@
 public with sharing class SearchService {
     public static SearchResponse search(Filter filter, Pagination pagination) {
         String whereClause = String.isEmpty(filter.getFilterString()) ? '' : ' WHERE ' + filter.getFilterString();
-        String orderClause = String.isEmpty(filter.getOrderByString()) ? '' : 'ORDER BY ' + filter.getOrderByString()  + ' ASC';
+        String orderClause = String.isEmpty(filter.getOrderByString()) ? '' : 'ORDER BY ' + filter.getOrderByString();
         String countQuery = 'SELECT Count() FROM ' + filter.getSObjectType() + whereClause;
         Integer allRecordsCount = Database.countQuery(countQuery);
         pagination.setRecordsCount(allRecordsCount);

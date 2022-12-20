@@ -8,6 +8,7 @@ public with sharing class Filter_Contact implements Filter {
     @AuraEnabled public String minAge;
     @AuraEnabled public String maxAge;
     @AuraEnabled public String sortedField;
+    @AuraEnabled public String sortDirection;
 
     public List<String> getFields() {
         return new List<String>{
@@ -26,7 +27,7 @@ public with sharing class Filter_Contact implements Filter {
     }
 
     public String getOrderByString() {
-        return sortedField;
+        return sortedField + ' ' + sortDirection + ' NULLS LAST';
     }
 
     public SObjectType getSObjectType() {

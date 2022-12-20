@@ -8,6 +8,7 @@ export default class RecordsManagerFilter extends LightningElement {
 
     @api filter;
     @api columns;
+    @api direction;
 
     handleValue(evt) {
         const newFilter = JSON.parse(JSON.stringify(this.filter));
@@ -27,9 +28,15 @@ export default class RecordsManagerFilter extends LightningElement {
         this.filterChange(newFilter);
     }
 
-    handleSort(evt) {
+    handleSortField(evt) {
         const newFilter = JSON.parse(JSON.stringify(this.filter));
         newFilter.sortedField = evt.target.value;
+        this.filterChange(newFilter);
+    }
+
+    handleDirection(evt) {
+        const newFilter = JSON.parse(JSON.stringify(this.filter));
+        newFilter.sortDirection = evt.detail.value;
         this.filterChange(newFilter);
     }
 
